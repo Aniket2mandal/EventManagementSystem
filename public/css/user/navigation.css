@@ -1,0 +1,119 @@
+.dashboard{
+    display:flex;
+    min-height: 130vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.left-dashboard{
+
+    width:300px;
+    background-color: rgb(237, 171, 47);
+    flex-shrink: 0;
+    margin-top:-7px;
+    margin-left:-7px;
+    /* position: sticky; */
+    /* flex-shrink: 0; /* Prevent the sidebar from shrinking */
+    /* height: auto; */
+}
+.header{
+    height:50px;
+    width:300px;
+    /* border-bottom:1px solid black; */
+     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    transition: 0.5s;
+    padding: 2px -1px;
+    margin-top:-17px;
+
+}
+.header h1{
+    text-align: center;
+    margin-left:-50px;
+}
+.dashboard-list{
+
+}
+.dashboard-list ul{
+    list-style: none;
+    padding: 10;
+    font-size: large;
+}
+
+.dashboard-list li {
+    margin: 30px 0;
+    text-align: left;
+margin-left:10px;
+
+}
+
+.dashboard-list a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.dashboard-list a:hover {
+    text-decoration: underline;
+}
+
+.dashboard-list li:hover{
+    /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+
+    transform: scale(1.1); */
+    transition: 0.5s;
+    transform: scale(1.1); /* Increase the size */
+    box-shadow: 0 4px 3px rgba(0, 0, 0, 0.3);
+    padding:4px 16px;
+}
+
+.right-dashboard{
+    /* height:100px; */
+    width:500px;
+
+}
+.nav{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    transition: 0.5s;
+    padding: 2px 16px;
+    height:50px;
+    width: 1185px;
+    display:flex;
+    justify-content: space-between;
+    margin-top:-7px;
+}
+.logo h1{
+margin:0;
+padding:0;
+}
+.nav-profile {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    background-color: black;
+}
+
+
+/* Add styling for the profile image */
+.nav-profile img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+
+}
+
+
+/* .right-dashboard h1{
+    margin:80px;
+} */
+
+
+
+
+
+
+
+
+
+

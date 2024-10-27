@@ -1,0 +1,172 @@
+
+.category-header{
+    margin-top:40px;
+margin-left: 50px;
+}
+.table {
+    width: 1000px; /* Set to 80% or adjust to your preference */
+    max-width: 1200px; /* Optional: Set a maximum width for the table */
+    border-collapse: collapse;
+   margin-left:25%; /* Center the table horizontally */
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin-top: 50px;
+}
+
+.table thead {
+    background-color: rgba(237, 171, 47, 0.8); /* Light gold background */
+}
+
+.table thead th {
+    padding: 10px;
+    text-align: left;
+    color: #fff; /* White text */
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray background for even rows */
+}
+
+.table tbody tr:hover {
+    background-color: rgba(237, 171, 47, 0.1); /* Light gold hover effect */
+}
+
+.table th, .table td {
+    padding: 10px;
+    text-align: left;
+}
+
+.table .btn {
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.table .btn-primary {
+    margin-left:10px;
+}
+
+.table .btn-primary:hover {
+    height:10px;
+    width:10px; /* Darker blue on hover */
+}
+
+.table .btn-danger {
+margin-left:10px;
+}
+
+.table .btn-danger :hover {
+    height:10px;
+    width:10px; /* Darker red on hover */
+}
+
+.btn-success {
+    background-color: black; /* Green background */
+    border: none;
+    padding:8px 16px;
+    border-radius:10px;
+    margin-left:25%;
+    text-decoration: none;
+   color:white;
+}
+
+
+ .btn-success:hover {
+    background-color: grey; /* Darker green on hover */
+}
+
+
+
+/* FORM STYLIING */
+.container {
+    width: 900px;
+    padding: 20px;
+    margin-left: 40%;
+    margin-top:20px;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Set a maximum width for the card */
+    margin-left: 20px; /* Custom margin to align to the left */
+    padding: 20px;
+}
+
+.card-header {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+    color:rgba(237, 171, 47);
+    font-size: large;
+    text-align: center;
+}
+
+.card-header h4 {
+    margin: 0;
+}
+
+.card-body .form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-create {
+    background-color:black;
+}
+.btn-create:hover{
+    background-color: gray;
+}
+
+.text-danger {
+    color: #dc3545;
+}
+
+/* prompt */
+.success{
+    background-color: rgba(53, 207, 61, 0.3);
+    height:fit-content;
+    width:1000px;
+    /* margin-top:200px; */
+    margin-left: 20%;
+    border-radius: 5px;
+    margin-top:30px;
+}
+
+.error{
+    background-color: rgba(182, 10, 21, 0.3);
+    height:fit-content;
+    width:1000px;
+    /* margin-top:200px; */
+    margin-left: 20%;
+    border-radius: 5px;
+    margin-top:30px;
+}
