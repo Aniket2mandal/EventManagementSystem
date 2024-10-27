@@ -30,12 +30,12 @@ Route::get('loginindex',[AuthController::class,'loginindex'])->name('user.logini
 Route::get('login',[AuthController::class,'login'])->name('user.login');
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::group(['prefix'=>'user'],function(){
     Route::middleware('auth')->group(function () {
-    // Route::get('/dashboard', [FrontController::class, 'index'])->name('user.dashboard');
+    Route::get('/dashboard', [FrontController::class, 'index'])->name('user.dashboard');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

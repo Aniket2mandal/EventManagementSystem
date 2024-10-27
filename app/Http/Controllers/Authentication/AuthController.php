@@ -15,6 +15,7 @@ class AuthController extends Controller
     }
 
     public function login(Request $request){
+
         $validate=$request->validate([
             'email'=>'required|string',
             'password'=>'required',
@@ -22,27 +23,29 @@ class AuthController extends Controller
 
         $user=User::where('email',$request->email)->first();
 
-        if(Hash::check($request->password,$user->password)){
-            //  $token=$user->createToken('Access Token')->accessToken;
+        if($user && Hash::check($request->password,$user->password)){
              return redirect()->route('home');
+            //  if ($request->expectsJson()) {
+            //     $token=$user->createToken('Access Token')->accessToken;
+            //     return response()->json([
+            //         'status' => 200,
+            //         'message' => "User logged in successfully",
+            //         'access_token' => $token,
+            //     ]);
+            // }
         }
         else{
-            // return response()->json([
-            //     'status'=>401,
-            //    'message'=>"Invalid",
-            // ]);
             return redirect()->route('user.loginindex')->with('error','Invalid Username/Password');
+            // if ($request->expectsJson()) {
+                // return response()->json([
+                //     'status' => 404,
+                //     'message' => "unable to login",
+
+                // ]);
+            // }
         }
-        // if ($request->wantsJson()) {
-        //     return response()->json([
-        //         'status' => 200,
-        //         'message' => "User logged in successfully",
-        //         'access_token' => $token,
-        //     ]);
-        // }
-
-
     }
+
 
     public function registerindex(){
         return view('USER.auth.register');
