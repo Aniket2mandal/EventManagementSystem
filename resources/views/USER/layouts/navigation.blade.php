@@ -37,8 +37,8 @@
                 <div class="logo">
                     <h1 style="margin:0;padding:0">Event Management System</h1>
                 </div>
-                <div class="nav-profile" onclick="myFunction()">
-                    <img src="/images/profile.jpg" alt="Profile" style="cursor: pointer;">
+                <div class="nav-profile">
+                    <a href="{{route('user.profile')}}"><img src="/raw/profile.png"></a>
                 </div>
             </div>
 

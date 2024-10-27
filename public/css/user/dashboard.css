@@ -1,0 +1,73 @@
+h1{
+    margin-left: 50px;
+}
+.sales{
+    display:flex;
+    width:fit-content;
+   /* align-items: center; */
+    /* justify-content: space-between; */
+}
+.total-orders{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    transition: 0.5s;
+    padding: 2px -1px;
+    height: 140px;
+    width:300px;
+    margin-top:50px;
+margin-left:80px;
+}
+.total-orders h1{
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+.total-orders p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: medium;
+}
+.total-orders a{
+margin-left:20px;
+}
+
+.total-customers{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    transition: 0.5s;
+    padding: 2px -1px;
+    height:140px;
+    width:300px;
+    margin-top:50px;
+margin-left:30px;
+    /* margin:20px; */
+}
+
+.total-customers h1{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    }
+    .total-customers p {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: medium;
+    }
+    .total-customers a{
+        margin-left:20px;
+        }
+
+.total-sales{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    transition: 0.5s;
+    padding: 2px -1px;
+    height:140px;
+    width:300px;
+    margin-top:50px;
+margin-left:30px;
+}
+.total-sales h1{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    }
+    .total-sales p {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: medium;
+    }
+    .total-sales a{
+        margin-left:20px;
+        }

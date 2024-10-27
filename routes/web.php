@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\user\EventController;
 use App\Http\Controllers\user\FrontController;
 use App\Http\Controllers\user\AttendeController;
+use App\Http\Controllers\user\ProfileController;
 use App\Http\Controllers\user\CategoryController;
 use App\Http\Controllers\Authentication\AuthController;
 
@@ -19,7 +20,7 @@ use App\Http\Controllers\Authentication\AuthController;
 */
 
 Route::get('/', function () {
-    return view('USER.auth.register');
+    return view('USER.auth.login');
 });
 
 Auth::routes();
@@ -64,6 +65,8 @@ Route::group(['prefix'=>'user'],function(){
     Route::post('categories/update/{id}',[CategoryController::class,'update'])->name('categories.update');
     Route::get('categories/delete/{id}',[CategoryController::class,'delete'])->name('categories.delete');
 
+    // PROFILE
+    Route::get('profile',[ProfileController::class,'index'])->name('user.profile');
     Route::get('logout',[AuthController::class,'logout'])->name('user.logout');
  });
 });
