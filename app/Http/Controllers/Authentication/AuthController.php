@@ -24,7 +24,7 @@ class AuthController extends Controller
 
         if(Hash::check($request->password,$user->password)){
             //  $token=$user->createToken('Access Token')->accessToken;
-             return redirect()->route('user.dashboard');
+             return redirect()->route('home');
         }
         else{
             // return response()->json([
