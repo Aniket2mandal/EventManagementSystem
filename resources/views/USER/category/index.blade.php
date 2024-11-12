@@ -35,8 +35,8 @@
             <tr>
                 <th scope="row">{{$i++}}</th>
                 <td>{{$items->name}}</td>
-                <td><a href="{{route('categories.edit',$items->id)}}" class="btn-primary "><img src="/raw/editimg.png" style="height:25px;width:20px"></a>
-                    <a href="{{route('categories.delete',$items->id)}}" class="btn-danger" id="del_btn"><img src="/raw/deleteimg.png"
+                <td><a href="{{route('categories.edit',$items->id)}}" class="btn-primar "><img src="/raw/editimg.png" style="height:25px;width:20px"></a>
+                    <a href="{{route('categories.delete',$items->id)}}" class="btn-dange" id="del_btn"><img src="/raw/deleteimg.png"
                             style="height:25px;width:20px"></a>
 
                 </td>
@@ -44,5 +44,5 @@
 @endforeach
         </tbody>
     </table><br>
-    <a href="{{ route('categories.create') }}"class=" btn-success">Create Category</a>
+    <a href="{{ route('categories.create') }}"class=" btn-successs">Create Category</a>
 @endsection

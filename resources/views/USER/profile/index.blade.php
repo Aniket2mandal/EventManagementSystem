@@ -5,7 +5,7 @@
     <div class="profilecontainer">
         <div class="profilecard">
             <div class="profilecircle">
-                <img src="/raw/profile.png">
+                <img src="css/raw/profile.png">
             </div>
             <div class="fullname">
 

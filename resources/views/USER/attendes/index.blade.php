@@ -33,14 +33,14 @@
                     <td>{{ $items->name }}</td>
                     <td>{{ $items->email }}</td>
                     <td>{{$items->event->title }}</td>
-                    <td><a href="{{ route('attendes.edit', $items->id) }}" class="btn-primary "><img src="/raw/editimg.png"
+                    <td><a href="{{ route('attendes.edit', $items->id) }}" class="btn-primar "><img src="/raw/editimg.png"
                                 style="height:25px;width:20px"></a>
-                        <a href="{{ route('attendes.delete', $items->id) }}" class="btn-danger" id="del_btn"><img
+                        <a href="{{ route('attendes.delete', $items->id) }}" class="btn-dange" id="del_btn"><img
                                 src="/raw/deleteimg.png" style="height:25px;width:20px"></a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table><br>
-    <a href="{{ route('attendes.create') }}"class=" btn-success">Create Attendee</a>
+    <a href="{{ route('attendes.create') }}"class=" btn-successs">Create Attendee</a>
 @endsection

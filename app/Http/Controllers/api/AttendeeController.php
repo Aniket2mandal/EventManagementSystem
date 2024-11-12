@@ -8,6 +8,29 @@ use App\Http\Controllers\Controller;
 
 class AttendeeController extends Controller
 {
+
+ /**
+     * @OA\Get(
+     *     path="/api/attendees/index",
+     *     summary="Get list of attendees",
+     *     tags={"Attendee"},
+     *     security={{"bearer_token":{}}},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="attendees", type="array", @OA\Items(type="object"))
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="No Record Found"
+     *     )
+     * )
+     */
+
     public function index(){
         $attendee=Attendee::all();
         if($attendee->count()>0){
@@ -25,6 +48,37 @@ class AttendeeController extends Controller
             return response()->json($data,404);
         }
     }
+
+    /**
+     * @OA\Post(
+     *     path="/api/attendees/store",
+     *     summary="Store a new attendee",
+     *     tags={"Attendee"},
+     *     security={{"bearer_token":{}}},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="name", type="string"),
+     *             @OA\Property(property="email", type="string"),
+     *             @OA\Property(property="event_id", type="integer")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Attendee created successfully",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Something went wrong"
+     *     )
+     * )
+     */
 
     public function store(Request $request){
         $request->validate([
@@ -52,6 +106,33 @@ class AttendeeController extends Controller
               }
     }
 
+     /**
+     * @OA\Get(
+     *     path="/api/attendees/show/{id}",
+     *     summary="Show an attendee",
+     *     tags={"Attendee"},
+     *     security={{"bearer_token":{}}},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="attendee", type="object")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Data not found"
+     *     )
+     * )
+     */
 
     public function show($id){
         $attendee=Attendee::find($id);
@@ -69,6 +150,43 @@ class AttendeeController extends Controller
         }
     }
 
+
+    /**
+     * @OA\Put(
+     *     path="/api/attendees/update/{id}",
+     *     summary="Update an attendee",
+     *     tags={"Attendee"},
+     *     security={{"bearer_token":{}}},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="name", type="string"),
+     *             @OA\Property(property="email", type="string"),
+     *             @OA\Property(property="event_id", type="integer")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Attendee updated successfully",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Attendee not found"
+     *     )
+     * )
+     */
 
 
     public function update(Request $request,int $id){
@@ -99,6 +217,33 @@ class AttendeeController extends Controller
             }
     }
 
+    /**
+     * @OA\Delete(
+     *     path="/api/attendees/delete/{id}",
+     *     summary="Delete an attendee",
+     *     tags={"Attendee"},
+     *     security={{"bearer_token":{}}},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Attendee deleted successfully",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Attendee not found"
+     *     )
+     * )
+     */
 
     public function destroy($id){
         $attendee=Attendee::find($id);

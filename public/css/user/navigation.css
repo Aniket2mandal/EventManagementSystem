@@ -22,7 +22,7 @@
      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
     transition: 0.5s;
     padding: 2px -1px;
-    margin-top:-17px;
+    margin-top:10px;
 
 }
 .header h1{
@@ -73,12 +73,12 @@ margin-left:10px;
 .nav{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
     transition: 0.5s;
-    padding: 2px 16px;
+    padding: 1px 17px;
     height:50px;
-    width: 1185px;
+    width: 1225px;
     display:flex;
     justify-content: space-between;
-    margin-top:-7px;
+    margin-top:4px;
 }
 .logo h1{
 margin:0;
@@ -91,6 +91,7 @@ padding:0;
     overflow: hidden;
     display: inline-block;
     position: relative;
+    margin-right:20px;
     /* background-color: black; */
 }
 

@@ -68,7 +68,7 @@ margin-left:10px;
     width:10px; /* Darker red on hover */
 }
 
-.btn-success {
+.btn-successs {
     background-color: black; /* Green background */
     border: none;
     padding:8px 16px;
@@ -77,10 +77,14 @@ margin-left:10px;
     text-decoration: none;
    color:white;
 }
+.btn-successs a{
 
+}
 
- .btn-success:hover {
+ .btn-successs:hover {
     background-color: grey; /* Darker green on hover */
+    text-decoration: none;
+    color:white;
 }
 
 
@@ -117,11 +121,12 @@ margin-left:10px;
 
 .card-body .form-group {
     margin-bottom: 15px;
+
 }
 
 .form-control {
     width: 100%;
-    padding: 10px;
+    padding: 0px;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-sizing: border-box;
@@ -151,15 +156,15 @@ margin-left:10px;
 }
 
 /* prompt */
-.success{
+/* .success{
     background-color: rgba(53, 207, 61, 0.3);
     height:fit-content;
     width:1000px;
-    /* margin-top:200px; */
-    margin-left: 20%;
+     margin-top:200px;
+     margin-left: 20%;
     border-radius: 5px;
     margin-top:30px;
-}
+} */
 
 .error{
     background-color: rgba(182, 10, 21, 0.3);

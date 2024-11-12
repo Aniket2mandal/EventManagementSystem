@@ -10,6 +10,28 @@ class EventController extends Controller
 {
 
 
+      /**
+     * @OA\Get(
+     *     path="/api/events/index",
+     *     summary="Get list of events",
+     *     tags={"Event"},
+     *     security={{"bearer_token":{}}},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="events", type="array", @OA\Items(type="object"))
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="No Record Found"
+     *     )
+     * )
+     */
+
     public function index(){
         $event=Event::all();
         if($event->count()>0){
@@ -27,6 +49,39 @@ class EventController extends Controller
             return response()->json($data,404);
         }
     }
+
+    /**
+     * @OA\Post(
+     *     path="/api/events/store",
+     *     summary="Store a new event",
+     *     tags={"Event"},
+     *     security={{"bearer_token":{}}},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="title", type="string"),
+     *             @OA\Property(property="description", type="string"),
+     *             @OA\Property(property="date", type="string", format="date"),
+     *             @OA\Property(property="location", type="string"),
+     *             @OA\Property(property="category_id", type="integer")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Event created successfully",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Something went wrong"
+     *     )
+     * )
+     */
 
     public function store(Request $request){
         $request->validate([
@@ -59,6 +114,34 @@ class EventController extends Controller
     }
 
 
+    /**
+     * @OA\Get(
+     *     path="/api/events/show/{id}",
+     *     summary="Show an event",
+     *     tags={"Event"},
+     *     security={{"bearer_token":{}}},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="event", type="object")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Data not found"
+     *     )
+     * )
+     */
+
     public function show($id){
         $event=Event::find($id);
         if($event){
@@ -75,6 +158,45 @@ class EventController extends Controller
         }
     }
 
+
+ /**
+     * @OA\Put(
+     *     path="/api/events/update/{id}",
+     *     summary="Update an event",
+     *     tags={"Event"},
+     *     security={{"bearer_token":{}}},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="title", type="string"),
+     *             @OA\Property(property="description", type="string"),
+     *             @OA\Property(property="date", type="string", format="date"),
+     *             @OA\Property(property="location", type="string"),
+     *             @OA\Property(property="category_id", type="integer")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Event updated successfully",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Event not found"
+     *     )
+     * )
+     */
 
 
     public function update(Request $request,int $id){
@@ -107,6 +229,34 @@ class EventController extends Controller
             }
     }
 
+
+     /**
+     * @OA\Delete(
+     *     path="/api/events/{id}",
+     *     summary="Delete an event",
+     *     tags={"Event"},
+     *     security={{"bearer_token":{}}},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Event deleted successfully",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Event not found"
+     *     )
+     * )
+     */
 
     public function destroy($id){
         $event=Event::find($id);

@@ -6,8 +6,51 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
+/**
+ * @OA\Info(
+ *      version="1.0.0",
+ *      title="Event Mnagement System API",
+ *      description="Event management API",
+ *      @OA\Contact(
+ *          email="support@example.com"
+ *      )
+ * )
+ *
+ *  * @OA\SecurityScheme(
+ *     securityScheme="bearer_token",
+ *     type="http",
+ *     scheme="bearer",
+ *     bearerFormat="JWT"
+ * )
+ * @OA\Tag(
+ *     name="Category",
+ *     description="Category related endpoints"
+ * )
+ */
+
+
 class CategoryController extends Controller
 {
+
+    /**
+     * @OA\Get(
+     *     path="/api/categories/index",
+     *     summary="Get list of categories",
+     * tags={"Category"},
+     *     security={{"bearer_token":{}}},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="categories", type="array", @OA\Items(type="object"))
+     *         )
+     *     )
+     * )
+     */
+
     public function index(){
         $category=Category::all();
         if($category->count()>0){
@@ -25,6 +68,32 @@ class CategoryController extends Controller
             return response()->json($data,404);
         }
     }
+
+   /**
+     * @OA\Post(
+     *     path="/api/categories/store",
+     *     summary="Store a new category",
+     * tags={"Category"},
+     *   security={{"bearer_token":{}}},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"name"},
+     *             @OA\Property(property="name", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Category created successfully",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     )
+     * )
+     */
+
 
     public function store(Request $request){
         $request->validate([
@@ -48,10 +117,43 @@ class CategoryController extends Controller
               }
     }
 
+  /**
+     * @OA\Get(
+     *     path="/api/categories/show/{id}",
+     *     summary="Get category by ID",
+     * tags={"Category"},
+     *   security={{"bearer_token":{}}},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="category", type="object")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Data not found",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     )
+     * )
+     */
 
     public function show($id){
         $category=Category::find($id);
         if($category){
+            // dd($category);
             return response()->json([
               'status'=>200,
               'category'=>$category
@@ -60,12 +162,50 @@ class CategoryController extends Controller
         else{
             return response()->json([
                 'status'=>400,
-                'message'=>'Data not found'
+                'message'=>'Data not available found'
               ],400);
         }
     }
 
-
+ /**
+     * @OA\Put(
+     *     path="/api/categories/update/{id}",
+     *     summary="Update a category",
+     * tags={"Category"},
+     *   security={{"bearer_token":{}}},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"name"},
+     *             @OA\Property(property="name", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Category updated successfully",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Category not found",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     )
+     * )
+     */
 
     public function update(Request $request,int $id){
         $request->validate([
@@ -91,6 +231,39 @@ class CategoryController extends Controller
             }
     }
 
+
+    /**
+     * @OA\Delete(
+     *     path="/api/categories/delete/{id}",
+     *     summary="Delete a category",
+     * tags={"Category"},
+     *   security={{"bearer_token":{}}},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Category deleted successfully",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Category not found",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     )
+     * )
+     */
 
     public function destroy($id){
         $category=Category::find($id);

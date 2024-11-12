@@ -12,7 +12,8 @@ class EventController extends Controller
    public function index(){
     $event_data=Event::all();
     $categories = Category::pluck('name');
-    return view('USER.event.index',compact('event_data','categories'));
+    $categoriesid = Category::get();
+    return view('USER.event.index',compact('event_data','categories','categoriesid'));
    }
 
    public function create(){
@@ -21,6 +22,7 @@ class EventController extends Controller
    }
 
    public function store(Request $request){
+    try{
     $request->validate([
         'title'=>'required|string',
         'description'=>'required|string',
@@ -28,6 +30,8 @@ class EventController extends Controller
         'location'=>'required|string',
         'category_id'=>'required|integer',
         ]);
+
+        // dd($request);
         $event=new Event();
         $event->title=$request->title;
         $event->description=$request->description;
@@ -36,8 +40,12 @@ class EventController extends Controller
         $event->category_id=$request->category_id;
         $event->save();
           // TO RETURN TO ANOTHER PAGE AFTER INSERTING WITH SUCESS MESSAGE
-          return redirect()->route('events.index')
-           ->with('success','Event'."\t".$event->title ."\t".'created sucessfully');
+         return redirect()->route('events.index')
+            ->with('success','Event'."\t".$event->title ."\t".'created sucessfully');
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Internal Server Error'], 500);
+        }
+
    }
 
    public function edit($id){

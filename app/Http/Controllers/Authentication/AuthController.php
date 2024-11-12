@@ -17,14 +17,17 @@ class AuthController extends Controller
     public function login(Request $request){
 
         $validate=$request->validate([
-            'email'=>'required|string',
+            'email'=>'required|email',
             'password'=>'required',
               ]);
 
         $user=User::where('email',$request->email)->first();
-
+// dd($user);
         if($user && Hash::check($request->password,$user->password)){
-             return redirect()->route('home');
+            // dd($user);
+            Auth::login($user);
+             return redirect()->route('user.dashboard');
+            //  return view('USER.index');
             //  if ($request->expectsJson()) {
             //     $token=$user->createToken('Access Token')->accessToken;
             //     return response()->json([
@@ -35,7 +38,7 @@ class AuthController extends Controller
             // }
         }
         else{
-            return redirect()->route('user.loginindex')->with('error','Invalid Username/Password');
+             return redirect()->route('user.loginindex')->with('error','Invalid Username/Password');
             // if ($request->expectsJson()) {
                 // return response()->json([
                 //     'status' => 404,

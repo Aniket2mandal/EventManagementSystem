@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\user\EventController;
 use App\Http\Controllers\user\FrontController;
 use App\Http\Controllers\user\AttendeController;
@@ -23,12 +24,12 @@ Route::get('/', function () {
     return view('USER.auth.login');
 });
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('registerindex',[AuthController::class,'registerindex'])->name('user.registerindex');
 Route::post('register',[AuthController::class,'register'])->name('user.register');
 Route::get('loginindex',[AuthController::class,'loginindex'])->name('user.loginindex');
-Route::get('login',[AuthController::class,'login'])->name('user.login');
+Route::post('login',[AuthController::class,'login'])->name('user.login');
 
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -37,7 +38,7 @@ Route::get('login',[AuthController::class,'login'])->name('user.login');
 Route::group(['prefix'=>'user'],function(){
     Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [FrontController::class, 'index'])->name('user.dashboard');
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    // Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
     // EVENT

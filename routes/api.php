@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\EventController;
 use App\Http\Controllers\api\AttendeeController;
 use App\Http\Controllers\api\CategoryController;
-use App\Http\Controllers\Authentication\AuthController;
 use App\Http\Controllers\Authentication\ApiAuthController;
 
 
@@ -25,8 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-// Route::post('register',[AuthController::class,'register'])->name('user.register');
- Route::post('apilogin',[ApiAuthController::class,'login'])->name('user.apilogin');
+Route::post('register',[ApiAuthController::class,'register']);
+Route::post('apilogin',[ApiAuthController::class,'login']);
 Route::middleware('auth:sanctum')->group(function () {
 // CATEGORY
 Route::get('categories/index', [CategoryController::class, 'index']);
@@ -50,5 +49,5 @@ Route::get('attendees/show/{id}',[AttendeeController::class,'show']);
 Route::put('attendees/update/{id}',[AttendeeController::class,'update']);
 Route::delete('attendees/delete/{id}',[AttendeeController::class,'destroy']);
 
-Route::post('apilogout',[ApiAuthController::class,'Apilogout'])->name('user.Apilogout');
+ Route::post('apilogout',[ApiAuthController::class,'Apilogout']);
 });

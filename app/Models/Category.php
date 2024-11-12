@@ -12,6 +12,8 @@ class Category extends Model
     protected $fillable = [
         'name'
     ];
+    // ALTERNATIVE
+    protected $guard=[];
 
     public function events()
     {
