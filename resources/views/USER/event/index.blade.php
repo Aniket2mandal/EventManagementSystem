@@ -45,8 +45,8 @@
         </tbody>
     </table>
     <br>
-    {{-- <a href="{{ route('events.create') }}"class=" btn-success">Create Event</a> --}}
-    <button class="btn btn-successs" data-toggle="modal" data-target="#createEventModal">Create Event</button>
+    <a href="{{ route('events.create') }}"class=" btn-success">Create Event</a>
+    {{-- <button class="btn btn-successs" data-toggle="modal" data-target="#createEventModal">Create Event</button> --}}
 
     <!-- Modal -->
     <div class="modal fade" id="createEventModal" tabindex="-1" role="dialog" aria-labelledby="createEventModalLabel" aria-hidden="true">

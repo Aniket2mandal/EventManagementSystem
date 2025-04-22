@@ -14,6 +14,7 @@ class FrontController extends Controller
         $event = Event::count();
         $category = Category::count();
         $attendee = Attendee::count();
+       
         // dd($event.$category.$Attendee);
         // dd(compact('event', 'attendee', 'category')); // This will dump the data and stop execution
          return view('USER.index',compact('event','category','attendee'));

@@ -103,7 +103,7 @@ if($user){
         if($user && Hash::check($request->password,$user->password)){
 
 
-                $token=$user->createToken('Access Token')->plainTextToken;;
+                $token=$user->createToken('Access Token')->plainTextToken;
                 return response()->json([
                     'status' => 200,
                     'message' => "User logged in successfully",
@@ -156,7 +156,7 @@ if($user){
  * )
  */
 public function Apilogout(Request $request)
-{ 
+{
     // Delete the user's current access token
     $user = $request->user();
     $user->tokens()->delete();

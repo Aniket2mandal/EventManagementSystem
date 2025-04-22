@@ -6,6 +6,7 @@ use App\Http\Controllers\user\EventController;
 use App\Http\Controllers\user\FrontController;
 use App\Http\Controllers\user\AttendeController;
 use App\Http\Controllers\user\ProfileController;
+use App\Http\Controllers\Admin\AbishekController;
 use App\Http\Controllers\user\CategoryController;
 use App\Http\Controllers\Authentication\AuthController;
 
@@ -40,6 +41,8 @@ Route::group(['prefix'=>'user'],function(){
     Route::get('/dashboard', [FrontController::class, 'index'])->name('user.dashboard');
     // Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+    Route::get('/abishek/index',[AbishekController::class,'index'])->name('abishek.index');
+    Route::get('/abishek/create',[AbishekController::class,'create'])->name('abishek.create');
 
     // EVENT
     Route::get('events/index', [EventController::class, 'index'])->name('events.index');
